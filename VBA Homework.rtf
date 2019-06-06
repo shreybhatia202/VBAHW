@@ -1,0 +1,46 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Sub stock_market()\
+\
+' Set ticker\
+\
+For Each ws In Worksheets\
+\
+Dim stock As String\
+\
+Dim stock_volume As Double\
+volume = 0\
+\
+Dim summary_row As Integer\
+summary_row = 2\
+\
+\
+For i = 2 To 797712\
+    stock_volume = stock_volume + ws.Cells(i, 7).Value\
+\
+    If ws.Cells(i, 1).Value <> ws.Cells(i + 1, 1).Value Then\
+           \
+    'Msgbox ws.(Cells(i + 1, 1).Value)\
+    stock = ws.Cells(i, 1).Value\
+               \
+    ws.Cells(1, 9).Value = "Ticker"\
+    ws.Cells(summary_row, 9).Value = stock\
+    ws.Cells(1, 10).Value = "Total Stock Volume"\
+    ws.Cells(summary_row, 10).Value = stock_volume\
+    \
+    stock_volume = 0\
+    summary_row = summary_row + 1\
+\
+    End If\
+    \
+    Next i\
+\
+Next ws\
+\
+End Sub\
+}
